@@ -12,7 +12,7 @@ namespace :erlang do
   OTP_SKIP_COMPILE = %w[
     appmon asn1 common_test cosEvent cosEventDomain cosFileTransfer cosNotification cosProperty cosTime cosTransactions
     wx debugger ssh test_server toolbar odbc orber otp_mibs os_mon reltool snmp observer dialyzer docbuilder edoc et
-    gs hipe runtime_tools percept pman tools inviso tv typer webtool jinterface megaco mnesia
+    gs runtime_tools percept pman tools inviso tv typer webtool jinterface megaco mnesia
   ]
 
   file ERL_BIN => AUTOCONF_259 do
@@ -63,7 +63,7 @@ namespace :erlang do
         end
 
         show_file('config.log') do
-          sh configure.join(' ')
+          sh configure.join(' ') + ENV['ERLANG_CONFOPTS']
         end
         gmake
         gmake "install"
